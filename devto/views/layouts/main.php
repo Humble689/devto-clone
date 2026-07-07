@@ -19,6 +19,8 @@ $this->render('_head');
     <title><?= Html::encode($this->title) ?></title>
 </head>
 <body class="d-flex flex-column h-100">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
 <?php $this->beginBody() ?>
 
 <?= $this->render('_header') ?>

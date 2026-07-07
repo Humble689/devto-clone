@@ -2,11 +2,15 @@
 
 namespace app\controllers;
 
+use app\models\Post;
+use Yii;
+
 class PostController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        return $this->render('index');
+        $model = Post::find()->all();
+        return $this->render('index',['model'=>$model]);
     }
 
 }
