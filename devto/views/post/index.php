@@ -158,7 +158,7 @@
         <?php foreach ($model as $data) { ?>
         <div>
             <h3> <?= $data['title'] ?></h3>
-          <div class="card"><img src="data:image/[MIME_TYPE];base64,<?= $data['image'] ?>" alt="Description"></div> 
+          <div class=""><img src="data:image/[MIME_TYPE];base64,<?= $data['image'] ?>" alt="Description"></div> 
  
             <?= $data['descript'] ?>
             <hr>

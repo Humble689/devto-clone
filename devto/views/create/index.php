@@ -9,9 +9,21 @@ use yii\widgets\ActiveForm;
     
     
          <div class="col-sm-7">
+            <?php $form = ActiveForm:: begin() ?>
+
+            <?= $form->field($model, 'title') ?>
+            <?= $form->field($model, 'descript')->label('Description') ?>
+            <br>
+            <?= $form->field($model, 'image')->fileInput(['accept'=> 'image/*']) ?>
+            <br>
+
+            <?= Html::submitButton('Publish', ['class'=>'btn btn-primary']) ?>
+
             
 
+
           </div>
+          <?php ActiveForm::end(); ?>
      
     <div class="col-sm-3">Writing a Great Post Title
 Think of your post title as a super short (but compelling!) description — like an overview of the actual post in one short sentence.
