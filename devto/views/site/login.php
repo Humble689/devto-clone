@@ -39,7 +39,7 @@ $labelOptions = ['class' => 'form-label fw-semibold small'];
                             Welcome<br>Back
                         </h2>
                         <p class="opacity-75 mb-0 login-brand-text">
-                            Log in to access your Yii2 application and manage your account.
+                            Log in to access your Devto and manage your account.
                         </p>
                     </div>
                 </div>

@@ -91,13 +91,14 @@ class SiteController extends Controller
     public function actionLogin(): Response|string
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            return $this->redirect(['post/index']);
         }
 
         $model = new LoginForm($this->security);
 
         if ($model->load($this->request->post()) && $model->login()) {
-            return $this->goBack();
+            // Yii::$app->session->setFlash('success','Welcome');
+            return $this->redirect(['post/index']);
         }
 
         $model->password = '';

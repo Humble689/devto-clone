@@ -1,195 +1,188 @@
 <?php
 /** @var yii\web\View $this */
+use yii\bootstrap5\Html;
 ?>
-<div class="container">
-<div class="row">
-    <div class="col-sm-3">
 
-         <div class="sidebar border-end h-100">
-  <div class="sidebar-header position-relative">
-    <div class="sidebar-brand">
-      <svg role="img" aria-label="CoreUI Logo Full" class="d-sidebar-narrow-none" width="88" height="32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 312 115">
-        <g style="fill: currentColor">
-          <path d="M96 24.124 57 1.608a12 12 0 0 0-12 0L6 24.124a12.034 12.034 0 0 0-6 10.393V79.55a12.033 12.033 0 0 0 6 10.392l39 22.517a12 12 0 0 0 12 0l39-22.517a12.033 12.033 0 0 0 6-10.392V34.517a12.034 12.034 0 0 0-6-10.393ZM94 79.55a4 4 0 0 1-2 3.464l-39 22.517a4 4 0 0 1-4 0L10 83.014a4 4 0 0 1-2-3.464V34.517a4 4 0 0 1 2-3.464L49 8.536a4 4 0 0 1 4 0l39 22.517a4 4 0 0 1 2 3.464V79.55Z"></path>
-          <path d="M74.022 70.071h-2.866a4 4 0 0 0-1.925.494L51.95 80.05 32 68.531V45.554l19.95-11.519 17.29 9.455a4 4 0 0 0 1.919.49h2.863a2 2 0 0 0 2-2v-2.71a2 2 0 0 0-1.04-1.756L55.793 27.02a8.04 8.04 0 0 0-7.843.09L28 38.626a8.025 8.025 0 0 0-4 6.929V68.53a8 8 0 0 0 4 6.928l19.95 11.519a8.043 8.043 0 0 0 7.843.088l19.19-10.532a2 2 0 0 0 1.038-1.753v-2.71a2 2 0 0 0-2-2Z"></path>
-          <g transform="translate(118 33)">
-            <path d="M50.745.428c-8.28.01-14.99 6.72-15 15v17.277c0 8.285 6.715 15 15 15 8.284 0 15-6.715 15-15V15.428c-.01-8.28-6.72-14.99-15-15Zm7 32.277a7 7 0 0 1-14 0V15.428a7 7 0 0 1 14 0v17.277ZM14.079 8.488a7.01 7.01 0 0 1 7.868 6.075.99.99 0 0 0 .984.865h6.03a1.01 1.01 0 0 0 1-1.097C29.354 6.206 22.38.046 14.243.447 6.161 1-.086 7.762 0 15.864V32.27c-.087 8.101 6.161 14.864 14.244 15.416 8.137.401 15.11-5.759 15.716-13.883a1.01 1.01 0 0 0-.999-1.098h-6.03a.99.99 0 0 0-.985.865 7.01 7.01 0 0 1-7.868 6.076A7.164 7.164 0 0 1 8 32.461V15.672a7.164 7.164 0 0 1 6.079-7.184ZM96.922 27.994a12.158 12.158 0 0 0 7.184-11.077v-3.7c0-6.71-5.44-12.15-12.149-12.15H75a1 1 0 0 0-1 1v44a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-17h6.621l7.916 17.413a1 1 0 0 0 .91.587h6.591a1 1 0 0 0 .91-1.414l-8.026-17.659Zm-.816-11.077a4.154 4.154 0 0 1-4.148 4.15h-9.852v-12h9.852a4.154 4.154 0 0 1 4.148 4.15v3.7ZM139 1.067h-26a1 1 0 0 0-1 1v44a1 1 0 0 0 1 1h26a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1h-19v-12h13a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1h-13v-10h19a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1ZM177 1.067h-6a1 1 0 0 0-1 1v22.647a7.007 7.007 0 1 1-14 0V2.067a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v22.647a15.003 15.003 0 1 0 30 0V2.067a1 1 0 0 0-1-1Z"></path>
-            <rect width="8" height="38" x="186" y="1.067" rx="1"></rect>
-          </g>
-        </g>
-      </svg>
-      <svg role="img" aria-label="CoreUI Logo Signet" class="d-sidebar-narrow" width="88" height="32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 102 115">
-        <g style="fill: currentColor">
-          <path d="M96 24.124 57 1.608a12 12 0 0 0-12 0L6 24.124a12.034 12.034 0 0 0-6 10.393V79.55a12.033 12.033 0 0 0 6 10.392l39 22.517a12 12 0 0 0 12 0l39-22.517a12.033 12.033 0 0 0 6-10.392V34.517a12.034 12.034 0 0 0-6-10.393ZM94 79.55a4 4 0 0 1-2 3.464l-39 22.517a4 4 0 0 1-4 0L10 83.014a4 4 0 0 1-2-3.464V34.517a4 4 0 0 1 2-3.464L49 8.536a4 4 0 0 1 4 0l39 22.517a4 4 0 0 1 2 3.464V79.55Z"></path>
-          <path d="M74.022 70.071h-2.866a4 4 0 0 0-1.925.494L51.95 80.05 32 68.531V45.554l19.95-11.519 17.29 9.455a4 4 0 0 0 1.919.49h2.863a2 2 0 0 0 2-2v-2.71a2 2 0 0 0-1.04-1.756L55.793 27.02a8.04 8.04 0 0 0-7.843.09L28 38.626a8.025 8.025 0 0 0-4 6.929V68.53a8 8 0 0 0 4 6.928l19.95 11.519a8.043 8.043 0 0 0 7.843.088l19.19-10.532a2 2 0 0 0 1.038-1.753v-2.71a2 2 0 0 0-2-2Z"></path>
-        </g>
-      </svg>
-    </div>
-    <button class="btn btn-ghost btn-sm d-sidebar-narrow-none d-flex" type="button" data-coreui-toggle="unfoldable">
-      <i class="icon icon-lg cil-sidebar-open d-sidebar-narrow-unfoldable"></i>
-      <i class="icon icon-lg cil-sidebar-close d-sidebar-narrow-unfoldable-none"></i>
-    </button>
-  </div>
-  <ul class="sidebar-nav sidebar-nav-tree" data-coreui-navigation>
-    <li class="nav-title">Nav Title</li>
-    <li class="nav-item">
-      <a class="nav-link active" href="#">
-        <i class="nav-icon cil-speedometer"></i> Nav item
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" href="#">
-        <i class="nav-icon cil-speedometer"></i> Nav item
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">
-        <i class="nav-icon cil-layers"></i> With badge
-        <span class="badge bg-primary ms-auto">NEW</span>
-      </a>
-    </li>
-    <li class="nav-item nav-group show">
-      <a class="nav-link nav-group-toggle" href="#">
-        <i class="nav-icon cil-puzzle"></i> Items group
-        <span class="nav-group-toggle-indicator">
-          <i class="icon icon-sm cil-minus show"></i>
-          <i class="icon icon-sm cil-plus hide"></i>
-        </span>
-      </a>
-      <ul class="nav-group-items compact">
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            Item
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            Item
-          </a>
-        </li>
-        <li class="nav-item nav-group show">
-          <a class="nav-link nav-group-toggle" href="#">
-            <span class="nav-icon"><span class="nav-icon-bullet"></span></span>
-            Items group 2
-            <span class="nav-group-toggle-indicator">
-              <i class="icon icon-sm cil-minus show"></i>
-              <i class="icon icon-sm cil-plus hide"></i>
-            </span>
-          </a>
-          <ul class="nav-group-items">
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Item
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Item
-              </a>
-            </li>
-            <li class="nav-item nav-group">
-              <a class="nav-link nav-group-toggle" href="#">
-                <span class="nav-icon"><span class="nav-icon-bullet"></span></span>
-                Items group 3
-                <span class="nav-group-toggle-indicator">
-                  <i class="icon icon-sm cil-minus show"></i>
-                  <i class="icon icon-sm cil-plus hide"></i>
-                </span>
-              </a>
-              <ul class="nav-group-items">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    Item
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    Item
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="https://coreui.io">
-        <i class="nav-icon cil-cloud-download"></i> Download CoreUI</a>
-    </li>
-  </ul>
-  <div class="sidebar-footer">
-    <div class="dropdown dropend w-100">
-      <a class="btn btn-ghost w-100 d-flex gap-2 p-1 align-items-center" href="#" role="button" data-coreui-toggle="dropdown" aria-expanded="false">
-        <div class="avatar avatar-md">
-          <img class="avatar-img rounded" src="/assets/img/avatars/7.jpg" alt="user@email.com">
-        </div>
-        <div class="small text-start d-sidebar-narrow-none">
-          <div class="fw-semibold">Lena Scaffold</div>
-          <div>lena@acme.com</div>
-        </div>
-        <i class="nav-icon cil-options ms-auto d-sidebar-narrow-none"></i>
-      </a>
-      <ul class="dropdown-menu w-100">
+    <div class="container">
+        <div class="row">
+                    <div class="col-sm-3">
+
+<div class="sidebar bg-white">
+
+    <ul class="list-unstyled mb-4">
+
         <li>
-        <div class="d-flex gap-2 px-2">
-          <div class="avatar avatar-md">
-            <img class="avatar-img rounded" src="/assets/img/avatars/7.jpg" alt="user@email.com">
-          </div>
-          <div class="small text-start">
-            <div class="fw-semibold">Lena Scaffold</div>
-            <div>lena@acme.com</div>
-          </div>
-        </div>
+            <?= Html::a('<i class="bi bi-house-door-fill"></i> Home',
+                ['/post/index'],
+                ['class'=>'sidebar-link']) ?>
         </li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="cil-user"></i>Account</a></li>
-        <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="cil-credit-card"></i>Billing</a></li>
-        <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="cil-settings"></i>Settings</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i class="cil-account-logout"></i>Logout</a></li>
-      </ul>
+
+        <li>
+            <?= Html::a('<i class="bi bi-trophy-fill"></i> DEV Challenges',
+                ['#'],
+                ['class'=>'sidebar-link']) ?>
+        </li>
+
+        <li>
+            <?= Html::a('<i class="bi bi-bookmark-fill"></i> Reading List',
+                ['#'],
+                ['class'=>'sidebar-link']) ?>
+        </li>
+
+        <li>
+            <?= Html::a('<i class="bi bi-stars"></i> DEV++',
+                ['#'],
+                ['class'=>'sidebar-link']) ?>
+        </li>
+
+        <li>
+            <?= Html::a('<i class="bi bi-play-btn-fill"></i> Videos',
+                ['#'],
+                ['class'=>'sidebar-link']) ?>
+        </li>
+
+        <li>
+            <?= Html::a('<i class="bi bi-mortarboard-fill"></i> Education',
+                ['#'],
+                ['class'=>'sidebar-link']) ?>
+        </li>
+
+        <li>
+            <?= Html::a('<i class="bi bi-question-circle-fill"></i> Help',
+                ['#'],
+                ['class'=>'sidebar-link']) ?>
+        </li>
+
+        <li>
+            <?= Html::a('<i class="bi bi-megaphone-fill"></i> Advertise',
+                ['#'],
+                ['class'=>'sidebar-link']) ?>
+        </li>
+
+        <li>
+            <?= Html::a('<i class="bi bi-building"></i> Organizations',
+                ['#'],
+                ['class'=>'sidebar-link']) ?>
+        </li>
+
+        <li>
+            <?= Html::a('<i class="bi bi-gem"></i> Showcase',
+                ['#'],
+                ['class'=>'sidebar-link']) ?>
+        </li>
+
+        <li>
+            <?= Html::a('<i class="bi bi-info-circle-fill"></i> About',
+                ['#'],
+                ['class'=>'sidebar-link']) ?>
+        </li>
+
+        <li>
+            <?= Html::a('<i class="bi bi-envelope-fill"></i> Contact',
+                ['#'],
+                ['class'=>'sidebar-link']) ?>
+        </li>
+
+    </ul>
+
+    <hr>
+
+    <h6 class="sidebar-heading">Other</h6>
+
+    <ul class="list-unstyled">
+
+        <li>
+            <?= Html::a('<i class="bi bi-shield-check"></i> Code of Conduct',
+                ['#'],
+                ['class'=>'sidebar-link']) ?>
+        </li>
+
+        <li>
+            <?= Html::a('<i class="bi bi-lock-fill"></i> Privacy Policy',
+                ['#'],
+                ['class'=>'sidebar-link']) ?>
+        </li>
+
+        <li>
+            <?= Html::a('<i class="bi bi-file-earmark-text-fill"></i> Terms of Use',
+                ['#'],
+                ['class'=>'sidebar-link']) ?>
+        </li>
+
+    </ul>
+
+    <hr>
+
+    <div class="social-icons">
+
+        <a href="#"><i class="bi bi-twitter-x"></i></a>
+
+        <a href="#"><i class="bi bi-facebook"></i></a>
+
+        <a href="#"><i class="bi bi-github"></i></a>
+
+        <a href="#"><i class="bi bi-instagram"></i></a>
+
     </div>
-  </div>
-</div> 
-        
-    </div>
-    <div class="col-sm-6">
-        <?php foreach ($model as $data) { ?>
-        <div>
-            <h3> <?= $data['title'] ?></h3>
-          <div class=""><img src="data:image/[MIME_TYPE];base64,<?= $data['image'] ?>" alt="Description"></div> 
- 
-            <?= $data['descript'] ?>
-            <hr>
 
-        </div>
-
-<?php } ?>
-        
-
-    </div>
-
-
-    <div class="col-sm-3">
-        <p>Active discussions
-I tested 3 models as AI agent quality inspectors: the stronger the model, the more valid work it ...
-18 comments
-Your Career Matters. So Does the Person Building It.
-15 comments
-What was your win this week?!
-5 comments
-PagedAttention: Navigating VRAM Fragmentation
-17 comments
-Welcome Thread - v382
-480 comments
-Congrats to the GitHub Finish-Up-A-Thon Challenge Winners!
-75 comments
-A New Personal Best: What Six Months of Locking In Can Do
-22 comments
-Every Post I Publish Gets AI Review. A Hostile Agent Still Found the Holes in Twenty Minutes.</p>
-    </div>
 </div>
-</div>
+                        
+
+                        
+                    </div>
+                    <div class="col-sm-6">
+                        <?php shuffle($model) ?>
+
+                        <?php foreach ($model as $data) 
+                            { ?>
+                        
+                      
+                        <div>
+                            <h3> <?= $data['title'] ?></h3>
+                                <?= Html::a('Delete', ['delete/delete', 'id' => $data['id']], [
+                                    'data' => [
+                                        'method' => 'post',
+                                        'confirm' => 'Are you sure you want to delete this post?'
+                                    ],
+                                    // 'class' => 'btn btn-danger'
+                                ]) ?>                            
+                        <div class="card border-0">
+                            <?php if (!empty($data['image'])): ?>
+                                <img src="data:image/jpeg;base64,<?= $data['image'] ?>" alt="<?= htmlspecialchars($data['title']) ?>">
+                            <?php endif; ?>
+                                    
+                          <div class="card-text">  <?= $data['descript'] ?> </div>
+                            
+                            </div>  
+                        
+                     </div>
+
+                <?php } ?>
+                        
+
+                    </div>
+
+
+                    <div class="col-sm-3">
+                        <p>Active discussions
+                I tested 3 models as AI agent quality inspectors: the stronger the model, the more valid work it ...
+                18 comments
+                Your Career Matters. So Does the Person Building It.
+                15 comments
+                What was your win this week?!
+                5 comments
+                PagedAttention: Navigating VRAM Fragmentation
+                17 comments
+                Welcome Thread - v382
+                480 comments
+                Congrats to the GitHub Finish-Up-A-Thon Challenge Winners!
+                75 comments
+                A New Personal Best: What Six Months of Locking In Can Do
+                22 comments
+                Every Post I Publish Gets AI Review. A Hostile Agent Still Found the Holes in Twenty Minutes.</p>
+                    </div>
+         </div>
+         
+     </div>
 
 

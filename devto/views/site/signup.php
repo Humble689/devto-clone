@@ -37,10 +37,10 @@ $labelOptions = ['class' => 'form-label fw-semibold small'];
                     </div>
                     <div>
                         <h2 class="fw-bold mb-3 login-brand-title">
-                            Welcome<br>Back
+                            Create<br>Acount
                         </h2>
                         <p class="opacity-75 mb-0 login-brand-text">
-                            Log in to access your Yii2 application and manage your account.
+                            create an account to access devto
                         </p>
                     </div>
                 </div>
@@ -116,11 +116,14 @@ $labelOptions = ['class' => 'form-label fw-semibold small'];
                     </div>
 
                     <?php ActiveForm::end(); ?>
-
+<!-- 
                     <div class="text-body-secondary text-center mt-3 small">
                         You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
                         To modify the username/password, check <code>app\models\User::$users</code>.
-                    </div>
+                    </div> -->
+                <div class="text-center mt-3">
+                    <?= Html::a('go to login', ['login']) ?>
+                </div>
 
                 </div>
             </div>
