@@ -139,17 +139,14 @@ use yii\bootstrap5\Html;
                       
                         <div>
                             <h3> <?= $data['title'] ?></h3>
-                                <?= Html::a('Delete', ['delete/delete', 'id' => $data['id']], [
-                                    'data' => [
-                                        'method' => 'post',
-                                        'confirm' => 'Are you sure you want to delete this post?'
-                                    ],
-                                    // 'class' => 'btn btn-danger'
-                                ]) ?>                            
+                                
+                                &nbsp;
+                            <?= Html::a('Edit', ['update/index', 'id'=> $data['id']],['data'=>['method'=> 'post']],) ?>                      
                         <div class="card border-0">
                             <?php if (!empty($data['image'])): ?>
                                 <img src="data:image/jpeg;base64,<?= $data['image'] ?>" alt="<?= htmlspecialchars($data['title']) ?>">
-                            <?php endif; ?>
+                            <?php endif; ?> +
+                            \ 
                                     
                           <div class="card-text"> 
 

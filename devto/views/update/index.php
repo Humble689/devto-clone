@@ -3,6 +3,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
 ?>
 <div class="container">
 <div class="row">
@@ -17,10 +18,19 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'imageFile')->fileInput(['accept'=> 'image/*']) ?>
             <br>
 
-            <?= Html::submitButton('Publish', ['class'=>'btn btn-primary']) ?>
+            <?= Html::submitButton('Update', ['class'=>'btn btn-primary']) ?>
+           
 
-                         <?= Html::a('Back',['post/index']) ?>
 
+            <?= Html::a('Delete', ['delete/delete', 'id' => $model['id']], [
+                                    'data' => [
+                                        'method' => 'post',
+                                        'confirm' => 'Are you sure you want to delete this post?'
+                                    ],
+                                    'class' => 'btn btn-danger'
+                                ]) ?>  
+
+             <?= Html::a('Back',['post/index']) ?>
 
 
           </div>
