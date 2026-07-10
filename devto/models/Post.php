@@ -12,12 +12,14 @@ class Post extends \yii\db\ActiveRecord
         return 'post';
     }
 
+    public $imageFile;
+
     public function rules()
     {
         return [
             [['image', 'created_by', 'title', 'descript'], 'default', 'value' => null],
             [['title', 'descript'], 'required'],
-
+            ['imageFile', 'file', 'extensions'=> 'jpg,jpeg,png'], // image allowed extenstions
 
             [['image', 'title', 'descript'], 'string'],
             [['created_by'], 'integer'],

@@ -151,7 +151,36 @@ use yii\bootstrap5\Html;
                                 <img src="data:image/jpeg;base64,<?= $data['image'] ?>" alt="<?= htmlspecialchars($data['title']) ?>">
                             <?php endif; ?>
                                     
-                          <div class="card-text">  <?= $data['descript'] ?> </div>
+                          <div class="card-text"> 
+
+                                    <?php 
+                                        $description = $data['descript'];
+                                        $limit = 200;
+                                    ?>
+
+                                    <?php if(strlen($description) > $limit): ?>
+
+                                        <span id="short<?= $data['id'] ?>">
+                                            <?= substr($description, 0, $limit) ?>...
+                                        </span>
+
+                                        <span id="full<?= $data['id'] ?>" style="display:none;">
+                                            <?= $description ?>
+                                        </span>
+
+                                        <button id="btn<?= $data['id'] ?>" 
+                                                onclick="showMore(<?= $data['id'] ?>)" 
+                                                class="btn btn-link">
+                                            Read more
+                                        </button>
+
+                                    <?php else: ?>
+
+                                        <?= $description ?>
+
+                                    <?php endif; ?>
+
+                                    </div>
                             
                             </div>  
                         
@@ -185,4 +214,29 @@ use yii\bootstrap5\Html;
          
      </div>
 
+
+     
+<script>
+function showMore(id){
+
+    let shortText = document.getElementById("short" + id);
+    let fullText = document.getElementById("full" + id);
+    let button = document.getElementById("btn" + id);
+
+    if(fullText.style.display === "none"){
+
+        shortText.style.display = "none";
+        fullText.style.display = "inline";
+        button.innerHTML = "Read less";
+
+    } else {
+
+        shortText.style.display = "inline";
+        fullText.style.display = "none";
+        button.innerHTML = "Read more";
+
+    }
+
+}
+</script>
 

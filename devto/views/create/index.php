@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'title') ?>
             <?= $form->field($model, 'descript')->label('Description') ?>
             <br>
-            <?= $form->field($model, 'image')->fileInput(['accept'=> 'image/*']) ?>
+            <?= $form->field($model, 'imageFile')->fileInput(['accept'=> 'image/*']) ?>
             <br>
 
             <?= Html::submitButton('Publish', ['class'=>'btn btn-primary']) ?>
