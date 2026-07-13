@@ -20,25 +20,29 @@ class CreateController extends \yii\web\Controller
         return parent::beforeAction($action);
     }
     public function actionIndex()
-    {
-        $model = new Post();
-        //converting in base 64
+{
+    $model = new Post();
 
-        if ($model->load(Yii::$app->request->post())){
-                $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-                if($model->imageFile){
-                    $imageData = file_get_contents($model->imageFile->tempName);
-                    $model->image = base64_encode($imageData);
-                }
-                if($model->save()){
-                Yii::$app->session->setFlash('success', 'Published successfully');
-                return $this->redirect(['post/index']);
-                }
-            }
-        
+    if ($model->load(Yii::$app->request->post())) {
 
-     return $this->render('index', [
-            'model' => $model
-        ]);
+        // Assign post owner
+        $model->created_by = Yii::$app->user->id;
+
+        $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+
+        if ($model->imageFile) {
+            $imageData = file_get_contents($model->imageFile->tempName);
+            $model->image = base64_encode($imageData);
+        }
+
+        if ($model->save()) {
+            Yii::$app->session->setFlash('success', 'Published successfully');
+            return $this->redirect(['post/index']);
+        }
     }
+
+    return $this->render('index', [
+        'model' => $model
+    ]);
+}
 }

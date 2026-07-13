@@ -10,6 +10,14 @@ class UpdateController extends \yii\web\Controller
     public function actionIndex($id)
     {
         $model = Post::findOne($id);
+        if (!Yii::$app->user->can ('updatePost',
+        ['post'=>$model]) &&
+    !Yii::$app->user->can('adminUpdatePost')) {
+
+        throw new \yii\web\ForbiddenHttpException(
+            'You cannot edit this post.'
+        );
+    }
 
         if($model->load(Yii::$app->request->post()) && $model->save()){
             Yii::$app->session->setFlash('success','Updated successfully');

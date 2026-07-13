@@ -141,8 +141,19 @@ use yii\bootstrap5\Html;
                             <h3> <?= $data['title'] ?></h3>
                                 
                                 &nbsp;
-                            <?= Html::a('Edit', ['update/index', 'id'=> $data['id']],['data'=>['method'=> 'post']],) ?>                      
-                        <div class="card border-0">
+<?php if(
+    Yii::$app->user->can('updatePost',['post'=>$data])
+    ||
+    Yii::$app->user->can('adminUpdatePost')
+): ?>
+
+<?= Html::a(
+    'Edit',
+    ['/update/index','id'=>$data['id']],
+    ['class'=>'btn btn-primary']
+) ?>
+
+<?php endif; ?>                        <div class="card border-0">
                             <?php if (!empty($data['image'])): ?>
                                 <img src="data:image/jpeg;base64,<?= $data['image'] ?>" alt="<?= htmlspecialchars($data['title']) ?>">
                             <?php endif; ?> 

@@ -17,15 +17,34 @@ class SignupForm extends Model{
         return[[['username', 'email','password'], 'required'],['email','email'],['username', 'unique','targetClass'=> User::class],['email', 'unique', 'targetClass'=> User::class]];
 
     }
-    public function signup(){
-        $user = new User;
-        $user->username= $this->username;
-        $user->email= $this->email;
-        $user->password_hash =Yii::$app->security->generatePasswordHash($this->password);
-        $user->auth_key= Yii::$app->security->generateRandomString();
-
-        return $user->save();
+    public function signup()
+{
+    if (!$this->validate()) {
+        return null;
     }
+
+    $user = new User();
+
+    $user->username = $this->username;
+    $user->email = $this->email;
+
+    $user->setPassword($this->password);
+    $user->generateAuthKey();
+
+    if($user->save()){
+
+        $auth = Yii::$app->authManager;
+
+        $auth->assign(
+            $auth->getRole('user'),
+            $user->id
+        );
+
+        return $user;
+    }
+
+    return null;
+}
 
 
 

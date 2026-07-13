@@ -3,38 +3,82 @@ namespace app\commands;
 
 use Yii;
 use yii\console\Controller;
+use app\components\AuthorRule;
 // use yii\web\Controller;
 
 class RbacController extends Controller{
-    public function actionInit(){
-        $auth = Yii::$app->authManager;
-        $auth->removeAll();
+  public function actionInit()
+{
+    $auth = Yii::$app->authManager;
+
+    $auth->removeAll();
 
 
-        //add post permission
-        $createpost= $auth->createPermission('createPost');
-        $createpost->description ='Create a Post';
-        $auth->add($createpost);
+    // Add rule first
+    $rule = new AuthorRule();
+    $rule->name = 'isAuthor';
 
-        //add update permission
-        $updatepost= $auth->createPermission('updatePost');
-        $updatepost->description='Update a post';
-        $auth->add($updatepost);
+    $auth->add($rule);
 
-        //add a role
-        $author= $auth->createRole('author');
-        $auth->add($author);
-        $auth->addChild($author,$createpost);
 
-        $admin= $auth->createRole('admin');
-        $auth->add($admin);
-        $auth->addChild($admin, $createpost);
-        $auth->addChild($admin,$updatepost);
 
-        $auth->assign($admin, 1);
+    // Anyone logged in can create posts
+    $createPost = $auth->createPermission('createPost');
+    $createPost->description = 'Create posts';
 
-         echo "RBAC initialized successfully.\n";
-    }
+    $auth->add($createPost);
+
+
+
+    // User can update own posts
+    $updatePost = $auth->createPermission('updatePost');
+    $updatePost->description = 'Update own posts';
+
+    $updatePost->ruleName = 'isAuthor';
+
+    $auth->add($updatePost);
+
+
+
+    // Admin can update everything
+    $adminUpdatePost = $auth->createPermission('adminUpdatePost');
+    $adminUpdatePost->description = 'Admin can update any post';
+
+    $auth->add($adminUpdatePost);
+
+
+
+    // User role
+    $user = $auth->createRole('user');
+
+    $auth->add($user);
+
+    $auth->addChild($user, $createPost);
+    $auth->addChild($user, $updatePost);
+
+
+
+    // Admin role
+    $admin = $auth->createRole('admin');
+
+    $auth->add($admin);
+
+    $auth->addChild($admin, $createPost);
+    $auth->addChild($admin, $adminUpdatePost);
+
+
+
+    // Assign admin to user ID 1
+    $auth->assign($admin, 1);
+
+    $auth->assign($user,2);
+    $auth->assign($user,3);
+    $auth->assign($user,4);
+
+
+
+    echo "RBAC initialized successfully.\n";
+}
 }
 
 
