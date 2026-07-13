@@ -8,6 +8,17 @@ use yii\web\UploadedFile;
 
 class CreateController extends \yii\web\Controller
 {
+
+ public function beforeAction($action)
+    {
+        if (!Yii::$app->user->can('createPost')) {
+            throw new \yii\web\ForbiddenHttpException(
+                'You are not allowed to create posts.'
+            );
+        }
+
+        return parent::beforeAction($action);
+    }
     public function actionIndex()
     {
         $model = new Post();

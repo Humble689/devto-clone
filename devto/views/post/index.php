@@ -145,8 +145,8 @@ use yii\bootstrap5\Html;
                         <div class="card border-0">
                             <?php if (!empty($data['image'])): ?>
                                 <img src="data:image/jpeg;base64,<?= $data['image'] ?>" alt="<?= htmlspecialchars($data['title']) ?>">
-                            <?php endif; ?> +
-                            \ 
+                            <?php endif; ?> 
+                            
                                     
                           <div class="card-text"> 
 

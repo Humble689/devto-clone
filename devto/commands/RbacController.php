@@ -1,9 +1,9 @@
 <?php
 namespace app\commands;
 
-use yii;
-use yii\console\controllers;
-use yii\web\Controller;
+use Yii;
+use yii\console\Controller;
+// use yii\web\Controller;
 
 class RbacController extends Controller{
     public function actionInit(){
@@ -12,7 +12,7 @@ class RbacController extends Controller{
 
 
         //add post permission
-        $createpost= $auth->createPermission('creatPost');
+        $createpost= $auth->createPermission('createPost');
         $createpost->description ='Create a Post';
         $auth->add($createpost);
 
@@ -30,6 +30,10 @@ class RbacController extends Controller{
         $auth->add($admin);
         $auth->addChild($admin, $createpost);
         $auth->addChild($admin,$updatepost);
+
+        $auth->assign($admin, 1);
+
+         echo "RBAC initialized successfully.\n";
     }
 }
 
