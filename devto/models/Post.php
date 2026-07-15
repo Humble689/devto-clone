@@ -19,13 +19,18 @@ class Post extends \yii\db\ActiveRecord
         return [
             [['image', 'created_by', 'title', 'descript'], 'default', 'value' => null],
             [['title', 'descript'], 'required'],
-            ['imageFile', 'file', 'extensions'=> 'jpg,jpeg,png'], // image allowed extenstions
+            ['imageFile', 'file', 'extensions'=> 'jpg,jpeg,png,webp'], // image allowed extenstions
 
             [['image', 'title', 'descript'], 'string'],
             [['created_by'], 'integer'],
             [['created_on'], 'safe'],
         ];
     }
+
+    public function getComments()
+{
+    return $this->hasMany(Comment::class, ['post_id' => 'id']);
+}
 
     public function attributeLabels()
     {

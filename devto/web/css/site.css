@@ -382,3 +382,104 @@ a.desc:after {
 .social-icons a:hover{
     color:#3b49df;
 }
+
+
+/* Base card matching your image color */
+.signup-card {
+    background-color: #3b5bdb; /* Adjust hex to match your exact theme */
+    border-radius: 8px;
+    font-family: sans-serif;
+    padding: 10px;
+}
+
+.checklist-title {
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.checklist-subtitle {
+    font-size: 0.85rem;
+    opacity: 0.75;
+    margin: 4px 0 12px 0;
+}
+
+/* Thin & Transparent Progress Elements */
+.progress-track {
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.15); /* Light transparent track */
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-track [role="progressbar"] {
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white fill */
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+/* List Styling to match image */
+.checklist-items {
+    list-style: none;
+    padding-left: 0;
+    margin: 10px 0 0 0;
+}
+
+.checklist-items li {
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Custom transparent ring icon instead of standard bullets */
+.checklist-items li::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+/* Mimic the sleek DEV.to initial state */
+.post-box-container {
+  border: 1px solid #e0e0e0;
+  border-radius: 0.375rem;
+}
+
+.post-input {
+  resize: none;
+  border-color: #d6d6d7;
+  transition: all 0.2s ease-in-out;
+  padding: 0.5rem 0.75rem;
+}
+
+/* Focused State: Animate expansion and show borders */
+.post-input:focus {
+  rows: 3; /* Handled gracefully by the style height instead */
+  height: 90px !important; 
+  border-color: #3b49df; /* DEV.to signature branding blue */
+  box-shadow: 0 0 0 1px #3b49df;
+}
+
+/* Action block setup for slick reveal transition */
+.post-actions-row {
+  display: flex;
+  justify-content: flex-end;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease-out, opacity 0.2s ease-in;
+}
+
+/* Activated class added dynamically by JS */
+.post-box-container.expanded .post-actions-row {
+  max-height: 50px;
+  opacity: 1;
+}

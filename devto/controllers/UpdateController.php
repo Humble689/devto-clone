@@ -26,4 +26,6 @@ class UpdateController extends \yii\web\Controller
         return $this->render('index',['model'=> $model]);
     }
 
+    
+
 }

@@ -72,7 +72,11 @@ $items = [
         ) ?>
 
     <div class="d-flex align-items-center ms-auto gap-3">
-        <i class="bi bi-bell fs-3"></i>
+        <i class="bi bi-bell fs-3">
+             <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+    <span class="visually-hidden">New alerts</span>
+  </span>
+        </i>
     </div>
 
         <!-- Profile -->

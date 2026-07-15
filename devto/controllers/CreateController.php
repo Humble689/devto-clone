@@ -19,6 +19,8 @@ class CreateController extends \yii\web\Controller
 
         return parent::beforeAction($action);
     }
+    
+
     public function actionIndex()
 {
     $model = new Post();
@@ -45,4 +47,27 @@ class CreateController extends \yii\web\Controller
         'model' => $model
     ]);
 }
+
+
+public function actionQuick()
+{
+    $model = new Post();
+
+    if ($model->load(Yii::$app->request->post())) {
+
+        $model->created_by = Yii::$app->user->id;
+
+        if ($model->save(false)) {
+            Yii::$app->session->setFlash('success', 'Published successfully');
+            return $this->redirect(['post/index']);
+        } else {
+            var_dump($model->errors);
+            die();
+        }
+    }
+
+    return $this->redirect(['post/index']);
+}
+
+    
 }

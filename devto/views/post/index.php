@@ -131,7 +131,35 @@ use yii\bootstrap5\Html;
                         
                     </div>
                     <div class="col-sm-6">
-                        <?php shuffle($model) ?>
+
+                            
+
+                        <div class="card p-3 shadow-sm post-box-container" style="max-width: 600px; margin: 20px auto;">
+                        <form id="postForm">
+
+                        <input type="hidden" name="<?= Yii::$app->request->csrfParam ?>" 
+                        value="<?= Yii::$app->request->getCsrfToken() ?>">
+
+                        <textarea 
+                            class="form-control post-input"
+                            id="postInput"
+                            name="Post[title]"
+                            rows="1"
+                            placeholder="What's on your mind?"
+                        ></textarea>
+
+                        <div class="post-actions-row mt-2">
+                            <?= Html::submitButton('Post', [
+                                'class' => 'btn btn-primary',
+                                'formaction' => \yii\helpers\Url::to(['create/quick']),
+                                'formmethod' => 'post'
+                            ]) ?>
+                        </div>
+
+                        </form>
+                        </div>
+
+                      
 
                         <?php foreach ($model as $data) 
                             { ?>
@@ -141,19 +169,20 @@ use yii\bootstrap5\Html;
                             <h3> <?= $data['title'] ?></h3>
                                 
                                 &nbsp;
-<?php if(
-    Yii::$app->user->can('updatePost',['post'=>$data])
-    ||
-    Yii::$app->user->can('adminUpdatePost')
-): ?>
+                            <?php if(
+                                Yii::$app->user->can('updatePost',['post'=>$data])
+                                ||
+                                Yii::$app->user->can('adminUpdatePost')
+                            ): ?>
 
-<?= Html::a(
-    'Edit',
-    ['/update/index','id'=>$data['id']],
-    ['class'=>'btn btn-primary']
-) ?>
+                            <?= Html::a(
+                                'Edit',
+                                ['/update/index','id'=>$data['id']],
+                                ['class'=>'btn btn-primary']
+                            ) ?>
 
-<?php endif; ?>                        <div class="card border-0">
+                            <?php endif; ?>      
+                            <div class="card border-0">
                             <?php if (!empty($data['image'])): ?>
                                 <img src="data:image/jpeg;base64,<?= $data['image'] ?>" alt="<?= htmlspecialchars($data['title']) ?>">
                             <?php endif; ?> 
@@ -187,20 +216,69 @@ use yii\bootstrap5\Html;
                                         <?= $description ?>
 
                                     <?php endif; ?>
+                                    <dialog>
 
-                                    </div>
-                            
-                            </div>  
-                        
-                     </div>
+                                    </dialog>
+                                <div style="width: 300px; height: 150px; background: none; flex-grow: 1;">
 
-                <?php } ?>
+                                  <hr>
+                                                                    
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <div>
+                                    <i class="bi bi-chat"></i>
+
+                                    <?= $data->getComments()->count() ?>
+
+                                    <?= $data->getComments()->count() == 1 ? 'Comment' : 'Comments' ?>
+                                </div>
+
+                                <div>
+                                    <?= Html::a(
+                                        'Add comment',
+                                        ['post/view', 'id' => $data->id],
+                                        ['class' => 'btn btn-sm btn-outline-primary']
+                                    ) ?>
+                                </div>
+                            </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<?php } ?>
                         
 
                     </div>
 
 
-                    <div class="col-sm-3">
+                                    <div class="col-sm-3">
+                                        <div class="sidebar bg-white">
+                                        <div class="card text-white signup-card">
+                    <div class="card-header border-0 pb-0">
+                        <h2 class="checklist-title">Signup Checklist</h2>
+                        <p class="checklist-subtitle">0 of 3 completed</p>
+                        
+                        <div class="progress-track">
+                            <div role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <ul class="checklist-items">
+                            <li>Fill out your profile</li>
+                            <li>Say hi in the Welcome thread</li>
+                            <li>Write your first post</li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                        <div class="card">
+                            <h6 class="sidebar-heading">Active discussions</h6>
                         <p>Active discussions
                 I tested 3 models as AI agent quality inspectors: the stronger the model, the more valid work it ...
                 18 comments
@@ -217,6 +295,8 @@ use yii\bootstrap5\Html;
                 A New Personal Best: What Six Months of Locking In Can Do
                 22 comments
                 Every Post I Publish Gets AI Review. A Hostile Agent Still Found the Holes in Twenty Minutes.</p>
+                    </div>
+                    </div>
                     </div>
          </div>
          
@@ -246,5 +326,23 @@ function showMore(id){
     }
 
 }
+</script>
+
+<script> //for the qick post
+const postInput = document.getElementById('postInput');
+const container = document.querySelector('.post-box-container');
+
+// Expand when user clicks or tabs into the input field
+postInput.addEventListener('focus', () => {
+  container.classList.add('expanded');
+});
+
+// Optional: Shrink back down if user clicks completely outside without typing anything
+document.addEventListener('click', (e) => {
+  if (!container.contains(e.target) && postInput.value.trim() === "") {
+    container.classList.remove('expanded');
+    postInput.style.height = ''; // Reverts back to initial row size
+  }
+});
 </script>
 
