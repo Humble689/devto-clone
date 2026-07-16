@@ -51,6 +51,9 @@ class PostController extends \yii\web\Controller
         ]);
     }
 
+    public function actionChallenge(){
+        return $this->render('challenge');
+    }
     
 
 }

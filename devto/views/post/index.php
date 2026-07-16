@@ -19,7 +19,7 @@ use yii\bootstrap5\Html;
 
         <li>
             <?= Html::a('<i class="bi bi-trophy-fill"></i> DEV Challenges',
-                ['#'],
+                ['/post/challenge'],
                 ['class'=>'sidebar-link']) ?>
         </li>
 

@@ -22,15 +22,15 @@ $labelOptions = ['class' => 'form-label fw-semibold small'];
         <div class="row g-0">
 
             <!-- Brand panel -->
-            <div class="col-md-5 d-none d-md-flex login-brand-panel text-white">
+            <div class="col-md-5 d-none d-md-flex text-white" style="background-image:url('<?= Yii::getAlias('@web/images/bg.png') ?>')">
                 <div class="d-flex flex-column justify-content-between p-4 p-lg-5 w-100">
                     <div>
                         <?= Html::img(
-                            Yii::getAlias('@web/images/yii3_full_white_for_dark.svg'),
+                            Yii::getAlias('@web/images/dev.png'),
                             [
-                                'alt' => 'Yii Framework',
+                                // 'alt' => 'Yii Framework',
                                 'class' => 'mb-4',
-                                'height' => 40,
+                                'height' => 90,
                             ],
                         ) ?>
                     </div>
@@ -115,10 +115,6 @@ $labelOptions = ['class' => 'form-label fw-semibold small'];
 
                     <?php ActiveForm::end(); ?>
 
-                    <div class="text-body-secondary text-center mt-3 small">
-                        You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
-                        To modify the username/password, check <code>app\models\User::$users</code>.
-                    </div>
 
                 </div>
             </div>
