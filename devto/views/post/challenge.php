@@ -23,6 +23,7 @@ $this->params['meta_keywords'] = 'yii, yii2, php, framework, web application, hi
 
 <div class="card">
             <p class="lead opacity-75 mb-4 hero-lead">
+                <div class="container">
                 <h5>
                     What are DEV Challenges? 🧠
                 </h5>
@@ -30,6 +31,7 @@ $this->params['meta_keywords'] = 'yii, yii2, php, framework, web application, hi
 
 
             </p>
+            </div>
             </div>
 </div>
                         
