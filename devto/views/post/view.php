@@ -39,7 +39,7 @@ use yii\helpers\Html;
 
       <div class="btn-group">
   <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Small button
+    Edit
   </button>
   <ul class="dropdown-menu">
 <?= Html::a('Delete', ['delete/comments', 'id' => $item['id']], [
@@ -102,7 +102,7 @@ use yii\helpers\Html;
 
     <div class="btn-group">
   <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Small button
+    Edit
   </button>
   <ul class="dropdown-menu">
 <li>

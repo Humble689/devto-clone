@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
             <?= Html::submitButton('Update', ['class'=>'btn btn-primary']) ?>
            
 
-             <?= Html::a('Back',['post/view']) ?>
+             <?= Html::a('Back',['post/view','id'=>$model->post_id]) ?>
 
 
           </div>
