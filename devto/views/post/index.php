@@ -158,7 +158,7 @@ use yii\bootstrap5\Html;
 
                         </form>
                         </div>
-
+        
                       
 
                         <?php foreach ($model as $data) 
@@ -167,7 +167,13 @@ use yii\bootstrap5\Html;
                       
                         <div>
                             <h3> <?= $data['title'] ?></h3>
-                                
+                            <p style="font-size: 12px;">
+
+                           <?= $data->user->username ?? 'no user'?><br>
+                 <small>  <?= date('M d', strtotime($data->created_on)) ?>                               
+                    (<?= Yii::$app->formatter->asRelativeTime($data->created_on) ?>) </small> </p>
+
+                            
                                 &nbsp;
                             <?php if(
                                 Yii::$app->user->can('updatePost',['post'=>$data])
@@ -205,11 +211,7 @@ use yii\bootstrap5\Html;
                                             <?= $description ?>
                                         </span>
 
-                                        <button id="btn<?= $data['id'] ?>" 
-                                                onclick="showMore(<?= $data['id'] ?>)" 
-                                                class="btn btn-link">
-                                            Read more
-                                        </button>
+                                        <?= Html::a('Read more', ['post/view', 'id'=>$data['id']],['class' => 'btn btn-sm btn-outline-primary py-1 px-2']) ?>
 
                                     <?php else: ?>
 
@@ -219,38 +221,47 @@ use yii\bootstrap5\Html;
                                     <dialog>
 
                                     </dialog>
-                                <div style="width: 300px; height: 150px; background: none; flex-grow: 1;">
-
-                                  <hr>
+                            <div class="w-100 flex-grow-1 text-muted small">
+                                
+                                <hr class="my-2 opacity-25"> 
                                                                     
-                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex justify-content-between align-items-center">
 
-                                <div>
-                                    <i class="bi bi-chat"></i>
+                                    <div class="d-flex align-items-center gap-3">
+                                        
+                                        
 
-                                    <?= $data->getComments()->count() ?>
+                                        <div class="d-flex align-items-center gap-1">
+                                            <i class="bi bi-chat fs-6"></i>
+                                            <span><?= $data->getComments()->count() ?></span>
+                                            <span><?= $data->getComments()->count() == 1 ? 'Comment' : 'Comments' ?></span>
+                                        </div>
+                                        
+                                    </div>
 
-                                    <?= $data->getComments()->count() == 1 ? 'Comment' : 'Comments' ?>
+                                    <!-- will add/ Bookmark icons with your button) -->
+                                    <div class="d-flex align-items-center">
+                                        <?= Html::a(
+                                            'Add comment',
+                                            ['post/view', 'id' => $data->id],
+                                            ['class' => 'btn btn-sm btn-outline-primary py-1 px-2']
+                                        ) ?>
+                                        
+                                    </div>
                                 </div>
 
-                                <div>
-                                    <?= Html::a(
-                                        'Add comment',
-                                        ['post/view', 'id' => $data->id],
-                                        ['class' => 'btn btn-sm btn-outline-primary']
-                                    ) ?>
-                                </div>
                             </div>
+                                                                &nbsp;
 
-</div>
 
-</div>
 
-</div>
+                                </div>
 
-</div>
+                                </div>
 
-<?php } ?>
+                                </div>
+
+                                <?php } ?>
                         
 
                     </div>
@@ -304,7 +315,7 @@ use yii\bootstrap5\Html;
 
 
      
-<script>
+<!-- <script>
 function showMore(id){
 
     let shortText = document.getElementById("short" + id);
@@ -326,7 +337,7 @@ function showMore(id){
     }
 
 }
-</script>
+</script> -->
 
 <script> //for the qick post
 const postInput = document.getElementById('postInput');

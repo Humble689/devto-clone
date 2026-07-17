@@ -11,7 +11,7 @@ class PostController extends \yii\web\Controller
     public function actionIndex()
     {
         $model = Post::find()
-            ->with('comments')
+            ->with('comments','user')
             ->orderBy(['created_on' => SORT_DESC])
             ->all();
 
@@ -23,7 +23,13 @@ class PostController extends \yii\web\Controller
 
     public function actionView($id)
     {
-        $post = Post::findOne($id);
+        $post = Post::find()
+    ->where(['id' => $id])
+    ->with([
+        'comments.user',
+        'comments.replies.user'
+    ])
+    ->one();
 
         if (!$post) {
             throw new \yii\web\NotFoundHttpException('Post not found');
@@ -40,8 +46,7 @@ class PostController extends \yii\web\Controller
 
 
             if ($comment->save()) {
-                return $this->refresh();
-            }
+            return $this->redirect(['post/view', 'id' => $post->id]);             }
         }
 
 
@@ -54,6 +59,40 @@ class PostController extends \yii\web\Controller
     public function actionChallenge(){
         return $this->render('challenge');
     }
+
+
+    public function actionReply($id){
+        $post = Post::findOne($id);
+
+        if (!$post) {
+            throw new \yii\web\NotFoundHttpException('Post not found');
+        }
+
+        $comment = new Comment();
+
+        // var_dump($comment); return;
+
+
+        if (!Yii::$app->user->isGuest && $comment->load(Yii::$app->request->post(),'')) {
+
+            $comment->post_id = $post->id;
+            $comment->user_id = Yii::$app->user->id;
+             $comment->parent_id = Yii::$app->request->post('parent_id');
+
+
+            if ($comment->save()) {
+                 return $this->redirect(['post/view', 'id' => $post->id]);
+            }
+        }
+
+
+        return $this->render('view', [
+            'post' => $post,
+            'comment' => $comment
+        ]);
+
+    }
+    
     
 
 }

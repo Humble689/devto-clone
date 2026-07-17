@@ -37,10 +37,10 @@ $labelOptions = ['class' => 'form-label fw-semibold small'];
                     </div>
                     <div>
                         <h2 class="fw-bold mb-3 login-brand-title">
-                            Create<br>Acount
+                            Create<br>Account
                         </h2>
                         <p class="opacity-75 mb-0 login-brand-text">
-                            create an account to access devto
+                            Create an account to access devto
                         </p>
                     </div>
                 </div>

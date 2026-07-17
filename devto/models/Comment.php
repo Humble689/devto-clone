@@ -78,4 +78,11 @@ class Comment extends \yii\db\ActiveRecord
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
+    public function getReplies()
+{
+    return $this->hasMany(Comment::class, ['parent_id' => 'id']);
+}
+
+
+
 }

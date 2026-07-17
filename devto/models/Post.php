@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+
 use Yii;
 
 class Post extends \yii\db\ActiveRecord
@@ -32,6 +33,10 @@ class Post extends \yii\db\ActiveRecord
     return $this->hasMany(Comment::class, ['post_id' => 'id']);
 }
 
+public function getUser()
+{
+    return$this->hasOne(User::class, ['id'=> 'created_by']);
+}
     public function attributeLabels()
     {
         return [

@@ -45,16 +45,34 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->auth_key === $authKey;
     }
 
-    public function getComments()
-{
-    return $this->hasMany(Comment::class, ['user_id' => 'id']);
-}
 
+    // Password hashing when creating account
+    public function setPassword(string $password): void
+    {
+        $this->password_hash = Yii::$app->security->generatePasswordHash($password);
+    }
+
+
+    // Password checking during login
     public function validatePassword(string $password): bool
     {
         return Yii::$app->security->validatePassword(
             $password,
             $this->password_hash
         );
+    }
+
+
+    // Generate login key
+    public function generateAuthKey(): void
+    {
+        $this->auth_key = Yii::$app->security->generateRandomString();
+    }
+
+
+    // User comments relationship
+    public function getComments()
+    {
+        return $this->hasMany(Comment::class, ['user_id' => 'id']);
     }
 }

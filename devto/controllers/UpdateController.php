@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\Post;
+
+use app\models\Comment;
 use yii;
 
 class UpdateController extends \yii\web\Controller
@@ -24,6 +26,18 @@ class UpdateController extends \yii\web\Controller
             return $this->redirect(['post/index']);
         }
         return $this->render('index',['model'=> $model]);
+    }
+
+     public function actionComupdate($id)
+    {
+        $model = Comment::findOne($id);
+     
+
+        if($model->load(Yii::$app->request->post()) && $model->save()){
+            Yii::$app->session->setFlash('success','Updated successfully');
+            return $this->redirect(['post/view' ,'id'=> $model->post_id]);
+        }
+        return $this->render('comupdate',['model'=> $model]);
     }
 
     
