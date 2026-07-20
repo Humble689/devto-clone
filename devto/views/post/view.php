@@ -36,6 +36,7 @@ use yii\helpers\Html;
     <p>
         <?= $item->comment ?>
     </p>
+        <?php if(Yii::$app->user->can('updateComment',['comment'=>$item])): ?>
 
       <div class="btn-group">
   <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -50,6 +51,7 @@ use yii\helpers\Html;
     ]) ?>   <li> <?= Html::a('update', ['update/comupdate', 'id'=>$item['id']]) ?></li>
   </ul>
 </div>
+<?php endif ?>
 
 
     <button 
@@ -60,6 +62,7 @@ use yii\helpers\Html;
 
 
     <!-- Reply form -->
+     <?php if(!Yii::$app->user->isGuest){ ?>
     <div id="reply<?= $item->id ?>" style="display:none;" class="mt-2">
 
         <form method="post" action="<?= \yii\helpers\Url::to(['post/reply','id'=>$post->id]) ?>">
@@ -86,6 +89,10 @@ use yii\helpers\Html;
 
     </div>
 
+   <?php } else { ?><br>
+    <?= 'Login in to reply' ?>
+<?php } ?>
+
 
     <!-- Display replies -->
     <?php foreach($item->replies as $reply): ?>
@@ -100,6 +107,8 @@ use yii\helpers\Html;
                 <?= $reply->comment ?>
             </p>
 
+        <?php if(Yii::$app->user->can('updateComment',['comment'=>$reply])): ?>
+                
     <div class="btn-group">
   <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Edit
@@ -118,6 +127,7 @@ use yii\helpers\Html;
 
 
         </div>
+        <?php endif; ?>
 
     <?php endforeach; ?>
 

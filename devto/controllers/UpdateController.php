@@ -31,6 +31,11 @@ class UpdateController extends \yii\web\Controller
      public function actionComupdate($id)
     {
         $model = Comment::findOne($id);
+
+
+    if (!Yii::$app->user->can('updateComment',['comment'=>$model])) {
+        throw new \yii\web\ForbiddenHttpException('You cannot update comments',);
+    }
      
 
         if($model->load(Yii::$app->request->post()) && $model->save()){

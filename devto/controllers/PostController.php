@@ -92,7 +92,12 @@ class PostController extends \yii\web\Controller
         ]);
 
     }
-    
+    public function actionTerms(){
+        return $this->render('terms&condtions');
+    }
+     public function actionConduct(){
+        return $this->render('codeofconduct');
+     }
     
 
 }

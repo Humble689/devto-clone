@@ -22,6 +22,10 @@ class DeleteController extends \yii\web\Controller
     public function actionComments($id)
     {
         $model = Comment::findOne($id);
+
+    if (!Yii::$app->user->can('updateComment')) {
+        throw new \yii\web\ForbiddenHttpException('You cannot update comments');
+    }
         
             $model->delete();
             Yii::$app->session->setFlash('success', 'comment Deleted successfully');

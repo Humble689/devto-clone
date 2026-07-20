@@ -4,6 +4,7 @@ namespace app\commands;
 use Yii;
 use yii\console\Controller;
 use app\components\AuthorRule;
+use app\components\CommentAuthorRule;
 // use yii\web\Controller;
 
 class RbacController extends Controller{
@@ -19,6 +20,11 @@ class RbacController extends Controller{
     $rule->name = 'isAuthor';
 
     $auth->add($rule);
+
+    $commentRule = new CommentAuthorRule();
+$commentRule->name = 'isCommentAuthor';
+
+$auth->add($commentRule);
 
 
 
@@ -38,6 +44,12 @@ class RbacController extends Controller{
 
     $auth->add($updatePost);
 
+    $updateComment = $auth->createPermission('updateComment');
+    $updateComment->description= 'Comment update';
+
+$updateComment->ruleName = 'isCommentAuthor';
+    $auth->add($updateComment);
+
 
 
     // Admin can update everything
@@ -55,6 +67,8 @@ class RbacController extends Controller{
 
     $auth->addChild($user, $createPost);
     $auth->addChild($user, $updatePost);
+    $auth->addChild($user, $updateComment);
+
 
 
 
@@ -65,6 +79,7 @@ class RbacController extends Controller{
 
     $auth->addChild($admin, $createPost);
     $auth->addChild($admin, $adminUpdatePost);
+    $auth->addChild($admin, $updateComment);
 
 
 
@@ -74,6 +89,7 @@ class RbacController extends Controller{
     $auth->assign($user,2);
     $auth->assign($user,3);
     $auth->assign($user,4);
+    
 
 
 
