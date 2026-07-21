@@ -179,7 +179,7 @@ function showMore(id){
 }
 </script> -->
 
-<script> //for the qick post
+<script> //for the quick post
 const postInput = document.getElementById('postInput');
 const container = document.querySelector('.post-box-container');
 
