@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Bookmark;
 use app\models\Post;
 use app\models\Comment;
 use Yii;
@@ -98,6 +99,53 @@ class PostController extends \yii\web\Controller
      public function actionConduct(){
         return $this->render('codeofconduct');
      }
-    
 
+
+  public function actionBookmark($id)
+{
+    if (Yii::$app->user->isGuest) {
+        throw new \yii\web\ForbiddenHttpException('Login first');
+    }
+
+
+    $exists = Bookmark::find()
+        ->where([
+            'user_id'=>Yii::$app->user->id,
+            'post_id'=>$id
+        ])
+        ->exists();
+
+
+    if (!$exists) {
+
+        $bookmark = new Bookmark();
+
+        $bookmark->user_id = Yii::$app->user->id;
+        $bookmark->post_id = $id;
+
+        $bookmark->save();
+    }
+
+
+    return $this->redirect(['index','id'=>$id]);
+}
+
+public function actionBookpage()
+{
+    if (Yii::$app->user->isGuest) {
+        throw new \yii\web\ForbiddenHttpException('Login first');
+    }
+
+    $bookmarks = Bookmark::find()
+        ->where([
+            'user_id' => Yii::$app->user->id
+        ])
+        ->with('post')
+        ->all();
+
+
+    return $this->render('bookmarks', [
+        'bookmarks' => $bookmarks
+    ]);
+}
 }

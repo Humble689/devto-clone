@@ -31,6 +31,13 @@ class Post extends \yii\db\ActiveRecord
     public function getComments()
 {
     return $this->hasMany(Comment::class, ['post_id' => 'id']);
+
+    
+}
+
+public function getBookmarks()
+{
+    return $this->hasMany(Bookmark::class, ['post_id'=>'id']);
 }
 
 public function getUser()

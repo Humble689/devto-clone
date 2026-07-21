@@ -35,7 +35,7 @@ $this->render('_head');
     </div>
 </main>
 
-///Deleted the footer rendering from here
+
 
 <?php $this->endBody() ?>
 </body>
