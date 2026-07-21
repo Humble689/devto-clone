@@ -5,14 +5,12 @@
             <div class="container"></div>
 <div class="container my-5 max-width-md">
 
-    <!-- Post Media Header -->
     <?php if (!empty($post->image)): ?>
         <div class="mb-4 rounded-3 overflow-hidden shadow-sm">
             <img src="data:image/jpeg;base64,<?= $post->image ?>" alt="<?= htmlspecialchars($post->image) ?>" class="img-fluid w-50 object-fit-cover">
         </div>
     <?php endif; ?> 
 
-    <!-- Post Content Section -->
     <article class="mb-5">
         <h1 class="display-5 fw-bold text-dark mb-3"><?= $post->title ?></h1>
         <p class="lead text-secondary lh-base"><?= $post->descript ?></p>
@@ -32,7 +30,6 @@
                         <?= $item->user->username ?>
                     </strong>
                     
-                    <!-- Comment Options Dropdown -->
                     <?php if(Yii::$app->user->can('updateComment',['comment'=>$item])): ?>
                         <div class="dropdown">
                             <button class="btn btn-link btn-sm text-muted p-0 border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -59,7 +56,6 @@
 
                 <p class="text-secondary mb-3"><?= $item->comment ?></p>
 
-                <!-- Action Footer -->
                 <div class="d-flex align-items-center gap-2">
                     <button class="btn btn-sm btn-light border text-primary fw-semibold px-3" onclick="document.getElementById('reply<?= $item->id ?>').style.display='block'">
                         Reply
@@ -126,7 +122,6 @@
 
     <hr class="my-5 border-2 opacity-25">
 
-    <!-- New Master Comment Area -->
     <div class="card border-0 shadow-sm bg-white p-4">
         <h4 class="h5 fw-bold mb-3">Leave a Comment</h4>
         <?php if(!Yii::$app->user->isGuest): ?>
